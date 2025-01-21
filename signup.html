@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rita Catering</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900
+      &family=Poppins:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- My Style -->
+    <link rel="stylesheet" href="css/style_signup.css" />
+  </head>
+
+  <body>
+    <!-- Pict Start -->
+    <div class="pict">
+      <img src="image/signup.png" alt="signin" />
+    </div>
+    <!-- Pict End -->
+
+    <!-- Form Start-->
+    <section class="form">
+      <div class="navbar">
+        <a href="index.html" class="navbar-logo">
+          <img src="image/Rita Catering.png" alt="logo" style="width: 250px" />
+        </a>
+      </div>
+      <h1>Sign up</h1>
+      <p>Let’s get you all st up so you can access your personal account.</p>
+      <form action="func.html" method="post">
+        <h2>Nama</h2>
+        <input type="text" name="nama" />
+        <div class="data">
+          <h2>Email</h2>
+          <input type="text" name="email" placeholder="Your email" />
+          <h2>Phone Number</h2>
+          <input type="text" name="nohp" placeholder="Your phone number" />
+        </div>
+        <h2>Password</h2>
+        <input type="password" name="password" />
+        <h2>Confirm Password</h2>
+        <input type="password" name="password" />
+      </form>
+      <div class="tpp">
+        <input type="checkbox" id="remember" />
+        <label for="tpp">I agree to all the Terms and Privacy Policies</label>
+      </div>
+      <div class="cta">
+        <a href="signin.html">Create account</a>
+      </div>
+      <div class="sup">
+        <p>Already have an account?</p>
+        <a href="signin.html">Sign In</a>
+      </div>
+    </section>
+    <!-- Form End-->
+  </body>
+
+  <!-- Icons -->
+  <script>
+    feather.replace();
+  </script>
+</html>

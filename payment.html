@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rita Catering</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900
+      &family=Poppins:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- My Style -->
+    <link rel="stylesheet" href="css/hstyle.css" />
+
+    <!-- Maps -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <!-- Navbar Start -->
+    <nav class="navbar">
+      <a href="index user.html" class="navbar-logo">
+        <img src="image/Rita Catering.png" alt="logo" style="width: 250px" />
+      </a>
+
+      <div class="navbar-nav">
+        <a href="index user.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">Profil</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="profile.html " id="login"> <i data-feather="user"></i></a>
+        <a href="#" id="burger"> <i data-feather="menu"></i></a>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Hero Start -->
+    <section class="hero" id="pesan">
+      <main class="content">
+        <h1>Pesan</h1>
+        <a href="#explore_menu" class="cta">Explore Menu</a>
+      </main>
+    </section>
+    <!-- Hero End -->
+
+    <section class="payment">
+      <table class="table-payment">
+        <tr>
+          <th>Product</th>
+          <th>Product Name</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+        <tr>
+          <td><img src="image/NasKun Ayam Bakar.jpg" width="80" /></td>
+          <td>Nasi Kuning Ayam Bakar Valuebox</td>
+          <td>Rp 25.000</td>
+          <td>
+            <button onclick="decreaseQuantity(0)">-</button>
+            <span id="qty0">5</span>
+            <button onclick="increaseQuantity(0)">+</button>
+          </td>
+          <td id="total0">Rp 125.000</td>
+        </tr>
+        <tr>
+          <td><img src="image/nasiliwet.jpg" width="80" /></td>
+          <td>Nasi Putih Ayam Bakar Valuebox</td>
+          <td>Rp 25.000</td>
+          <td>
+            <button onclick="decreaseQuantity(1)">-</button>
+            <span id="qty1">5</span>
+            <button onclick="increaseQuantity(1)">+</button>
+          </td>
+          <td id="total1">Rp 125.000</td>
+        </tr>
+      </table>
+
+      <table class="subtotal">
+        <tr>
+          <th colspan="2" class="subtotal-title">CART SUBTOTAL</th>
+        </tr>
+        <tr>
+          <td>Order Subtotal</td>
+          <td><span id="orderSubtotal">Rp 250.000</span></td>
+        </tr>
+        <tr>
+          <td>Shipping</td>
+          <td><span id="shipping">Rp 50.000</span></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td>
+            <strong><span id="grandTotal">Rp 300.000</span></strong>
+          </td>
+        </tr>
+      </table>
+
+      <div class="payment-options">
+        <h3 class="title-options-payment">OPSI PEMBAYARAN</h3>
+        <div class="payment-method">
+          <input type="radio" name="radio" value="qris" id="radio-1" checked />
+          <input type="radio" name="radio" value="bca" id="radio-2" />
+
+          <label for="radio-1" class="radio radio-1">
+            <div class="dot"></div>
+            <span>QRIS</span>
+          </label>
+          <label for="radio-2" class="radio radio-2">
+            <div class="dot"></div>
+            <span>BCA</span>
+          </label>
+        </div>
+        <br /><button class="payment-btn" onclick="processPayment()">
+          Continue Payment
+        </button>
+      </div>
+
+      <div class="popup" id="qrisPopup">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2>QRIS Payment</h2>
+        <p>Scan the QR code to proceed with the payment</p>
+        <img src="image/qr-code.png" alt="QR Code" />
+      </div>
+
+      <div class="popup" id="bcaPopup">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2>Proof of payment</h2>
+        <p>Please Enter Proof of Payment</p>
+        <input type="file" accept="image/*" />
+        <button class="payment-btn">Send</button>
+      </div>
+
+      <script>
+        let prices = [25000, 25000];
+        let quantities = [5, 5];
+
+        function updateTotals() {
+          let subtotal = 0;
+          for (let i = 0; i < prices.length; i++) {
+            let total = prices[i] * quantities[i];
+            document.getElementById("total" + i).innerText =
+              "Rp " + total.toLocaleString();
+            subtotal += total;
+          }
+          document.getElementById("orderSubtotal").innerText =
+            "Rp " + subtotal.toLocaleString();
+          let shipping = 50000;
+          document.getElementById("grandTotal").innerText =
+            "Rp " + (subtotal + shipping).toLocaleString();
+        }
+
+        function increaseQuantity(index) {
+          quantities[index]++;
+          document.getElementById("qty" + index).innerText = quantities[index];
+          updateTotals();
+        }
+
+        function decreaseQuantity(index) {
+          if (quantities[index] > 1) {
+            quantities[index]--;
+            document.getElementById("qty" + index).innerText =
+              quantities[index];
+            updateTotals();
+          }
+        }
+      </script>
+
+      <script>
+        function processPayment() {
+          let paymentMethod = document.querySelector(
+            'input[name="radio"]:checked'
+          );
+          if (paymentMethod) {
+            if (paymentMethod.value === "qris") {
+              document.getElementById("qrisPopup").style.display = "block";
+            } else if (paymentMethod.value === "bca") {
+              document.getElementById("bcaPopup").style.display = "block";
+            }
+          }
+        }
+
+        function closePopup() {
+          document.getElementById("qrisPopup").style.display = "none";
+          document.getElementById("bcaPopup").style.display = "none";
+        }
+      </script>
+    </section>
+
+    <!-- Footer Start -->
+    <section class="footer">
+      <div class="logo">
+        <h1>Rita Catering</h1>
+        <h2>FOOD & RESTAURANT</h2>
+        <img src="image/logofix.png" alt="logo" />
+        <p>Open: 05:00am - 07:00pm</p>
+        <p>0812-8752-0321</p>
+      </div>
+      <div class="bout">
+        <h2>About</h2>
+        <a href="#home">> Home</a>
+        <a href="#menu">> Menu</a>
+        <a href="#about">> Profil</a>
+        <a href="#contact">> Contact</a>
+        <a href="#signin">> Sign In</a>
+      </div>
+      <div class="menu">
+        <h2>Menu</h2>
+        <a href="#menu">> Ayam</a>
+        <a href="#menu">> Daging</a>
+        <a href="#menu">> Telur</a>
+      </div>
+      <div class="maps">
+        <h2>Gmaps</h2>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27784.216217811136!2d106.59623300636682!3d-6.159529888863554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f8b4f121b151%3A0xf83d7c538ddd89ee!2sRita%20Catering!5e0!3m2!1sen!2sid!4v1737356004893!5m2!1sen!2sid"
+          width="200"
+          height="100"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </section>
+    <!-- Footer End -->
+
+    <!-- Privacy Start -->
+    <section class="privacy">
+      <p>&copy; 2024 Rita Catering. All Rights Reserved.</p>
+      <p>
+        <a href="#">Privacy Policy</a> | <a href="#">Terms and Conditions</a>
+      </p>
+    </section>
+    <!-- Privacy End -->
+
+    <!-- Icons -->
+    <script>
+      feather.replace();
+    </script>
+    <!-- My Javascript-->
+    <script src="js/script.js"></script>
+  </body>
+</html>

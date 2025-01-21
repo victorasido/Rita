@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orders List - Rita Catering</title>
+    <link rel="stylesheet" href="rita-styles.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="logo">
+          <img
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo.jpg-IBdkeiz6Mj5HAmXCY3iAsfiHH1N18y.jpeg"
+            alt="Rita Catering Logo"
+            class="logo-image"
+          />
+          <span>Rita Catering</span>>
+        </div>
+        <nav class="nav-menu">
+          <a href="dashboard.html" class="nav-link">DASHBOARD</a>
+          <a href="orderlist.html" class="nav-link active">ORDER LIST</a>
+          <a href="login.html" class="nav-link">Logout</a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+          <h1>Orders List</h1>
+        </header>
+
+        <div class="content">
+          <!-- Breadcrumb -->
+          <div class="page-header">
+            <div class="breadcrumb">
+              <span>Home</span>
+              <span>›</span>
+              <span>Order List</span>
+            </div>
+            <div class="date-filter">
+              <span>Feb 14,2022 - Feb 20,2022</span>
+            </div>
+          </div>
+
+          <!-- Recent Orders -->
+          <div class="card">
+            <div class="card-header">
+              <h2>Recent Orders</h2>
+            </div>
+            <div class="table-container">
+              <table class="orders-table">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Product</th>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Customer Name</th>
+                    <th>Price</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="checkbox" /></td>
+                    <td>Nasi Kuning ayam Goreng (ValueBox)</td>
+                    <td>#25426</td>
+                    <td>Nov 8th,2023</td>
+                    <td>
+                      <div class="customer">
+                        <span>Kavin</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="Price">
+                        <span>1350000</span>
+                      </div>
+                    </td>
+                    <td>50</td>
+                  </tr>
+                  <!-- Additional order rows -->
+                </tbody>
+              </table>
+            </div>
+            <div class="pagination">
+              <button class="page-button active">1</button>
+              <button class="page-button">2</button>
+              <button class="page-button">3</button>
+              <button class="page-button">4</button>
+              <button class="page-button">...</button>
+              <button class="page-button">10</button>
+              <button class="page-button next">NEXT ›</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <p>© 2024 Rita Catering. All Rights Reserved.</p>
+          <div class="footer-links">
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms and Conditions</a>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
